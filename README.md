@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# NOTE:
+Node version require `v14+` to run this source
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

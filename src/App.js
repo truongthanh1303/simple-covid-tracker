@@ -1,24 +1,66 @@
-import logo from './logo.svg';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { responsiveFontSizes } from '@mui/material';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import { useReducer } from 'react';
+
 import './App.css';
+import Header from './components/Header';
+import SelectCountry from './components/SelectCountry';
+import InfoList from './components/InfoList';
+import { reducer, initialState } from './reducer';
+import { AppContext } from './context';
+
+let theme = createTheme(theme => ({
+  breakpoints: {
+    values: {
+      xs: 320,
+      sm: 576,
+      md: 768,
+      lg: 992,
+      xl: 1200,
+    },
+  },
+  // typography: {
+  //   html: {
+  //     [theme.breakpoints.up('md')]: {
+  //       fontSize: 12,
+  //     }
+  //   }
+  // }
+}));
+
+theme = responsiveFontSizes(theme);
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={[state, dispatch]}>
+      <ThemeProvider theme={theme}>
+        <Header/>
+        <Container maxWidth="md" disableGutters={true} sx={{ marginTop: 4 }}>
+          {(state.country || state.region) && (
+            <Box sx={{ mb: 2 }}>
+              { state.country && (
+                <Typography variant="h1" color="primary.main" sx={{ textAlign: 'center' }}>
+                  { state.country }
+                </Typography>
+              )}
+              { state.region && (
+                <Typography variant="h2" color="primary.light" sx={{ textAlign: 'center' }}>
+                  Region: { state.region }
+                </Typography>
+              )}
+            </Box>
+          )}
+
+          <InfoList/>
+          <SelectCountry/>
+        </Container>
+      </ThemeProvider>
+    </AppContext.Provider>
   );
 }
 
