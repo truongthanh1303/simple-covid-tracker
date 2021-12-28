@@ -18,7 +18,8 @@ describe('test the reducer and actions', () => {
         deaths: 0,
         updated: null
       },
-      covidStatsData: {}
+      covidStatsData: {},
+      isLoading: false
     });
   });
 

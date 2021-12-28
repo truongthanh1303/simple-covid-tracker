@@ -22,13 +22,6 @@ let theme = createTheme(theme => ({
       xl: 1200,
     },
   },
-  // typography: {
-  //   html: {
-  //     [theme.breakpoints.up('md')]: {
-  //       fontSize: 12,
-  //     }
-  //   }
-  // }
 }));
 
 theme = responsiveFontSizes(theme);
@@ -40,7 +33,7 @@ function App() {
     <AppContext.Provider value={[state, dispatch]}>
       <ThemeProvider theme={theme}>
         <Header/>
-        <Container maxWidth="md" disableGutters={true} sx={{ marginTop: 4 }}>
+        <Container maxWidth="md" disableGutters={true} style={{ marginTop: 70 }}>
           {(state.country || state.region) && (
             <Box sx={{ mb: 2 }}>
               { state.country && (
@@ -55,7 +48,6 @@ function App() {
               )}
             </Box>
           )}
-
           <InfoList/>
           <SelectCountry/>
         </Container>

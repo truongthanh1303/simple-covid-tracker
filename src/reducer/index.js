@@ -2,7 +2,8 @@ export const ACTION_TYPE = {
   CHANGE_COUNTRY: 'change_country',
   CHANGE_REGION: 'change_region',
   CHANGE_STATS: 'change_stats',
-  SET_DATA: 'set_data'
+  SET_DATA: 'set_data',
+  SET_LOADING: 'set_loading'
 }
 
 export const reducer = (state, action) => {
@@ -34,6 +35,12 @@ export const reducer = (state, action) => {
         covidStatsData: action.payload
       };
 
+    case ACTION_TYPE.SET_LOADING:
+      return {
+        ...state,
+        isLoading: action.payload
+      };
+
     default:
       return state;
   }
@@ -50,5 +57,6 @@ export const initialState = {
     deaths: 0,
     updated: null
   },
-  covidStatsData: {}
+  covidStatsData: {},
+  isLoading: false
 }

@@ -88,8 +88,18 @@ function SelectCountry() {
             payload: stats
           });
         })
-      );
+      ).finally(() => {
+        dispatch({
+          type: ACTION_TYPE.SET_LOADING,
+          payload: false
+        });
+      });
     }
+
+    dispatch({
+      type: ACTION_TYPE.SET_LOADING,
+      payload: true
+    });
 
     getCovidStats();
   }, [dispatch, INIT_COUNTRY, INIT_REGION]);
