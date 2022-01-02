@@ -1,4 +1,3 @@
-import { makeStyles } from '@mui/styles';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -8,23 +7,7 @@ import { useContext } from 'react';
 
 import logo from '../../assets/images/logo.jpg';
 import { AppContext } from '../../context';
-
-const useStyles = makeStyles(theme => ({
-  logo: {
-    width: 150,
-    [theme.breakpoints.down('sm')]: {
-      display: 'none'
-    }
-  },
-  title: {
-    color: theme.palette.primary.main,
-    flex: 1,
-    textAlign: 'center',
-    [theme.breakpoints.up('sm')]: {
-      textAlign: 'right'
-    }
-  }
-}))
+import { useStyles } from './Header.styles';
 
 function Header() {
   const classes = useStyles();

@@ -31,7 +31,7 @@ function Selection({
         defaultValue={''}
         label="Country"
         onChange={handleChange}
-        inputProps={{ 'data-testid': 'select-component' }}
+        inputProps={{ 'data-testid': `select-component-${label}` }}
       >
         <MenuItem value={''}>{textForEmptyValue}</MenuItem>
         {selectionData.map((entry, index) => (

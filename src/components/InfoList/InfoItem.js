@@ -2,8 +2,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CountUp from 'react-countup';
+import { useStyles } from './InfoItem.styles';
 
 function InfoItem({data}) {
+  const classes = useStyles();
   const {
     count,
     style,
@@ -14,24 +16,27 @@ function InfoItem({data}) {
   return <>
     <Card variant="outlined" className={style}>
       <CardContent>
-        <Typography sx={{ fontSize: 14, textAlign: 'center' }} color="text.secondary" gutterBottom>
+        <Typography className={classes.title} color="text.secondary" gutterBottom data-testid={`${title}-title`}>
           {title}
         </Typography>
-        <Typography sx={{ textAlign: 'center' }} variant="h5" component="div">
+        <Typography className={classes.count} variant="h5" component="div">
           <CountUp
             start={0}
             end={count}
             duration={1}
             separator=","
+            containerProps={{
+              'data-testid': `${title}-count`
+            }}
           />
         </Typography>
         { updated && (
-          <Typography sx={{ mt: 1.5, textAlign: 'center' }} color="text.secondary" variant="body2">
+          <Typography className={classes.date} color="text.secondary" variant="body2">
             {new Date(updated).toDateString()}
           </Typography>
         )}
         { updated && (
-          <Typography sx={{ textAlign: 'center' }} color="text.secondary" variant="body2">
+          <Typography className={classes.time} color="text.secondary" variant="body2">
             {new Date(updated).toLocaleTimeString()}
           </Typography>
         )}

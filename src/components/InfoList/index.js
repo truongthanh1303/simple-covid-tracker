@@ -1,25 +1,9 @@
-import { makeStyles } from '@mui/styles';
 import Grid from '@mui/material/Grid';
 import { useContext, useEffect, useState } from 'react';
 
 import InfoItem from './InfoItem';
 import { AppContext } from '../../context';
-
-const useStyles = makeStyles(theme => ({
-  container: {
-    paddingLeft: 16,
-    paddingRight: 16,
-  },
-  confirmed: {
-    borderBottom: `5px solid ${theme.palette.primary.dark} !important`,
-  },
-  recovered: {
-    borderBottom: `5px solid ${theme.palette.success.dark} !important`,
-  },
-  deaths: {
-    borderBottom: `5px solid ${theme.palette.error.dark} !important`,
-  }
-}))
+import { useStyles } from './InfoList.styles';
 
 function InfoList() {
   const classes = useStyles();

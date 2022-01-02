@@ -37,12 +37,12 @@ function App() {
           {(state.country || state.region) && (
             <Box sx={{ mb: 2 }}>
               { state.country && (
-                <Typography variant="h1" color="primary.main" sx={{ textAlign: 'center' }}>
+                <Typography variant="h1" color="primary.main" sx={{ textAlign: 'center' }} data-testid="heading-country">
                   { state.country }
                 </Typography>
               )}
               { state.region && (
-                <Typography variant="h2" color="primary.light" sx={{ textAlign: 'center' }}>
+                <Typography variant="h2" color="primary.light" sx={{ textAlign: 'center' }} data-testid="heading-region">
                   Region: { state.region }
                 </Typography>
               )}
